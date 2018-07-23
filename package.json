@@ -1,0 +1,30 @@
+{
+  "name": "vuex-normalizator",
+  "version": "0.1.0",
+  "description": "Fetch and manipulate normalized data in Vuex store with ease.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enkot/vuex-normalizator.git"
+  },
+  "keywords": [
+    "normalize",
+    "normalizr",
+    "vuex"
+  ],
+  "author": "Taras Batenkov <taras.batenkov@gmail.com> (https://github.com/enkot)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enkot/vuex-normalizator/issues"
+  },
+  "homepage": "https://github.com/enkot/vuex-normalizator#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "normalizr": "^3.2.4",
+    "vue": "^2.5.16",
+    "vuex": "^3.0.1"
+  }
+}
