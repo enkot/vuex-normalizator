@@ -18,8 +18,8 @@ export default async (
     return response
   }
 
-  const { method } = config
-  let mutation: string
+  // const { method } = config
+  // let mutation: string
 
   // switch (method) {
   //   case 'POST':
