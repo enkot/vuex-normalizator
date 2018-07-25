@@ -1,0 +1,26 @@
+{
+    "id": "2",
+    "title": "New post!",
+    "author": {
+        "id": "564",
+        "name": "John"
+    },
+    "comments": [
+        {
+            "id": "270",
+            "content": "Nice post!",
+            "commenter": {
+                "id": "245",
+                "name": "Jane"
+            }
+        },
+        {
+            "id": "252",
+            "content": "I am not a spammer!",
+            "commenter": {
+                "id": "246",
+                "name": "Spambot5000"
+            }
+        }
+    ]
+}

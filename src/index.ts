@@ -6,8 +6,8 @@ import fetch, { setStore } from './fetch'
 export { fetch }
 
 export default (schemas: Schema) => {
-  return (store: Store<any>): void => {
-    setStore(store);
-    store.registerModule('n_entities', normalizator(schemas));
-  }
+    return (store: Store<any>): void => {
+        setStore(store)
+        store.registerModule('n_entities', normalizator(schemas))
+    }
 }

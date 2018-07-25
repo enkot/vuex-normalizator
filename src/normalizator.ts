@@ -3,13 +3,17 @@ import { denormalize } from 'normalizr'
 
 export default (schemas: any) => {
   return {
-    state: {},
+    state: Object.keys(schemas).reduce((acc: any, entity) => {
+      acc[entity] = {}
+      return acc
+    }, {}),
     mutations: {
       N_ENTITIES_UPDATE(state: any, entities: any): void {
-        Object.keys(entities).forEach((key: string) => {
-          Vue.set(state, key, {
-            ...(state[key] || {}),
-            ...entities[key],
+        Object.keys(entities).forEach((entity: string) => {
+          Object.keys(entities[entity]).forEach((item: string) => {
+            Vue.set(state[entity], item, {
+              ...entities[entity][item],
+            })
           })
         })
       },
