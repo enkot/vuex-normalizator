@@ -19,33 +19,51 @@ export default new Vuex.Store({
       state: {},
       mutations: {
         GET_ARTICLES(state, payload) {
-          Vue.set(state, 'articleIds', payload)
+          Vue.set(state, 'response', payload)
         },
       },
       actions: {
-        async fetchFirstData({ commit }) {
-          const response = await fetch(
+        async fetchAllArticles({ commit }) {
+          await fetch(
             {
               method: 'get',
-              url: '/data1',
+              url: '/articles',
             },
             [article],
           )
+          const response = await fetch({
+            method: 'get',
+            url: '/articles',
+          })
 
           commit('GET_ARTICLES', response)
         },
-        async fetchSecondData({ commit }) {
+        async fetchArticle({ commit }) {
           const response = await fetch(
             {
-              method: 'get',
-              url: '/data2',
+              method: 'post',
+              url: '/article',
             },
             article,
           )
         },
+        async fetchComment({ commit }) {
+          const response = await fetch(
+            {
+              method: 'post',
+              url: '/comment',
+            },
+            comment,
+          )
+        },
       },
       getters: {
-        getEntitiesState: (state: any, getters: any, rootState: any, rootGetters: any) => {
+        getEntitiesState: (
+          state: any,
+          getters: any,
+          rootState: any,
+          rootGetters: any,
+        ) => {
           return rootState
         },
       },

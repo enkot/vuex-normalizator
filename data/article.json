@@ -5,8 +5,7 @@
         "id": "564",
         "name": "John"
     },
-    "comments": [
-        {
+    "comments": [{
             "id": "270",
             "content": "Nice post!",
             "commenter": {

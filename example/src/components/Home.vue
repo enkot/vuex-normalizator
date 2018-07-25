@@ -1,9 +1,16 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <button @click="getArticles">Get Articles</button>
-    <button @click="updateArticles">Update</button>
-    <pre v-text="appState" style="text-align: left;"></pre>
+    <button @click="fetchAllArticles">Get Articles</button>
+    <button @click="fetchArticle">Update</button>
+    <button @click="fetchComment">Get comment</button>
+    <div style="width: 50%;">
+      <pre v-text="stateResponse" style="text-align: left;"></pre>
+    </div>
+    <div style="width: 50%;">
+      <pre v-text="stateEntities" style="text-align: left;"></pre>
+    </div>
+    
   </div>
 </template>
 
@@ -15,20 +22,18 @@ import { Action, Getter } from 'vuex-class'
 export default class Home extends Vue {
   @Prop() private msg!: string
 
-  @Action private fetchFirstData!: () => void
-  @Action private fetchSecondData!: () => void
+  @Action private fetchAllArticles!: () => void
+  @Action private fetchArticle!: () => void
+  @Action private fetchComment!: () => void
   @Getter private allUsers: any
   @Getter private getEntitiesState: any
   @Getter private getCommentsForArticle!: (id: string) => any
 
-  private get appState() {
-    return JSON.stringify(this.getEntitiesState, null, 2)
+  private get stateResponse() {
+    return JSON.stringify(this.getEntitiesState.response, null, 2)
   }
-  private async getArticles() {
-    await this.fetchFirstData()
-  }
-  private async updateArticles() {
-    await this.fetchSecondData()
+  private get stateEntities() {
+    return JSON.stringify(this.getEntitiesState.n_entities, null, 2)
   }
 }
 </script>
