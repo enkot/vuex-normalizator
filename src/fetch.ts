@@ -5,34 +5,35 @@ import axios, { AxiosRequestConfig } from 'axios'
 let nStore: Store<any>
 
 export const setStore = (store: Store<any>): void => {
-  nStore = store
+    nStore = store
 }
 
 export default async (
-  config: AxiosRequestConfig,
-  schema?: Schema,
+    config: AxiosRequestConfig,
+    schema?: Schema,
 ): Promise<any> => {
-  const { data: response } = await axios(config)
+    const { data: response } = await axios(config)
 
-  if (!schema) {
-    return response
-  }
+    if (!schema) {
+        return response
+    }
 
-  // const { method } = config
-  // let mutation: string
+    const { method } = config
+    let mutation: string
 
-  // switch (method) {
-  //   case 'POST':
-  //     mutation = 'N_ENTITIES_UPDATE'
-  //     break
-  //   default:
-  //     mutation = 'N_ENTITIES_UPDATE'
-  //     break
-  // }
+    switch (method) {
+        case 'DELETE':
+            mutation = 'N_ENTITIES_DELETE'
+            break
+        default:
+            mutation = 'N_ENTITIES_UPDATE'
+            break
+    }
 
-  const { entities, result } = normalize(response, schema)
+    const { entities, result } = normalize(response, schema)
 
-  nStore.commit('N_ENTITIES_UPDATE', entities)
+    console.log(entities, result)
+    nStore.commit(mutation, entities)
 
-  return result
+    return result
 }

@@ -2,8 +2,8 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <button @click="fetchAllArticles">Get Articles</button>
-    <button @click="fetchArticle">Update</button>
-    <button @click="fetchComment">Get comment</button>
+    <button @click="fetchArticle">Get Article</button>
+    <button @click="deleteComment">Delete comment</button>
     <div style="width: 50%;">
       <pre v-text="stateResponse" style="text-align: left;"></pre>
     </div>
@@ -24,7 +24,7 @@ export default class Home extends Vue {
 
   @Action private fetchAllArticles!: () => void
   @Action private fetchArticle!: () => void
-  @Action private fetchComment!: () => void
+  @Action private deleteComment!: () => void
   @Getter private allUsers: any
   @Getter private getEntitiesState: any
   @Getter private getCommentsForArticle!: (id: string) => any

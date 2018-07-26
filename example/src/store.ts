@@ -47,11 +47,14 @@ export default new Vuex.Store({
             article,
           )
         },
-        async fetchComment({ commit }) {
+        async deleteComment({ commit }, id) {
           const response = await fetch(
             {
-              method: 'post',
+              method: 'delete',
               url: '/comment',
+              data: {
+                id
+              },
             },
             comment,
           )
